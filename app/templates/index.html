@@ -1,0 +1,13 @@
+<!doctype html>
+<title>MyCloud CloudBox</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>Cloudbox</h1>
+  <div class=metanav>
+  {% block body %}
+  <form action='/documents' method='post'>
+    Select document: <input type="file" name="doc">
+    <input type="submit" name="">
+  </form>
+  {% endblock %}
+</div>
