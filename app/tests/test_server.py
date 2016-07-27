@@ -7,14 +7,15 @@ from unittest import TestCase
 class TestService(TestCase):
     def setUp(self):
         self.db, service.config['DATABASE'] =  tempfile.mkstemp()
-        self.app = cloud.service.test_client()
+        self.app = service.test_client()
 
     def tearDown(self):
         os.close(self.db)
-        os.unlink(cloud.service.config['DATABASE'])
+        os.unlink(service.config['DATABASE'])
 
     def test_index_200(self):
         response = self.app.get('/')
+        print(response)
         self.assertEqual(response.status_code, 200)
 
     def test_list_document(self):

@@ -1,3 +1,5 @@
+import logging
+import app
 from app import cloudbox, db, service
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -6,6 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 @service.route("/")
 def index():
+    service.logger.info("LOG - Index rendered.")
     return render_template('index.html')
 
 @service.route("/documents", methods=["GET", "POST", "PUT"])
@@ -18,6 +21,6 @@ def documents(doc=None):
         return "Successful POST!"
 
 
-
 if __name__ == '__main__':
+    logging.config.dictConfig(app.LOGGING)
     service.run()

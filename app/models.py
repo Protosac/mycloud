@@ -2,7 +2,6 @@ from app import db
 
 
 class Base(db.Model):
-
     __abstract__  = True
 
     id = db.Column(db.Integer, primary_key=True)
@@ -13,3 +12,5 @@ class Base(db.Model):
 class Document(Base):
     def __init__(self, name):
         self.name = name
+
+    name = db.Column(db.String)
