@@ -1,13 +1,19 @@
 import logging.config
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from app import settings
 
 service = Flask(__name__)
-service.config.from_object('settings.Development')
+service.config.from_object(settings.Development)
 service.logger.info("LOGGING CONFIGURED")
 db = SQLAlchemy(service)
 
 db.create_all()
+
+# View config
+from app.views import main
+
+# service.add_url_rule('/', endpoint='main.index', build_only=True)
 
 LOGGING = dict(
     version = 1,
