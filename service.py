@@ -1,9 +1,10 @@
 import logging
-import app
-from app import cloudbox, db, service
+from app.config import configure_service
+from app import LOGGING, service
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 if __name__ == '__main__':
-    logging.config.dictConfig(app.LOGGING)
+    logging.config.dictConfig(LOGGING)
+    configure_service(service)
     service.run()

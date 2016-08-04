@@ -1,10 +1,8 @@
 import logging.config
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
-from app import settings
 
 service = Flask(__name__)
-service.config.from_object(settings.Development)
 service.logger.info("LOGGING CONFIGURED")
 db = SQLAlchemy(service)
 
