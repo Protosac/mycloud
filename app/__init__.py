@@ -7,7 +7,6 @@ from app.models import db
 
 # service = Flask(__name__)
 service = create_app('development')
-# db = SQLAlchemy()
 db.init_app(service)
 
 with service.app_context():
