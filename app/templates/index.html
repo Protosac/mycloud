@@ -5,9 +5,9 @@
   <h1>Cloudbox</h1>
   <div class=metanav>
   {% block body %}
-  <form action='/documents' method='post'>
+  <form action='/documents' method='post' enctype="multipart/form-data">
     Document Name: <input type="text" name="docName">
-    Select document: <input type="file" name="docContent">
+    Select document: <input type="file" name="uploadDoc">
     <input type="submit" name="submit">
   </form>
   {% endblock %}

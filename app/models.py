@@ -10,6 +10,8 @@ class Base(db.Model):
                                            onupdate=db.func.current_timestamp())
 
 class Document(Base):
+    __tablename__= 'documents'
+    
     name = db.Column(db.String)
     content = db.Column(db.Text)
     
