@@ -2,12 +2,22 @@ import logging.config
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 
-service = Flask(__name__)
-service.config.from_object('settings.Development')
-service.logger.info("LOGGING CONFIGURED")
-db = SQLAlchemy(service)
+from app.factory import create_app
 
-db.create_all()
+# service = Flask(__name__)
+service = create_app('development')
+db = SQLAlchemy()
+db.init_app(service)
+
+with service.app_context():
+  db.create_all()
+
+service.logger.info("LOGGING CONFIGURED")
+
+# View config
+from app.views import index
+
+# service.add_url_rule('/', endpoint='main.index', build_only=True)
 
 LOGGING = dict(
     version = 1,
@@ -21,7 +31,7 @@ LOGGING = dict(
               'level': logging.INFO},
         'logs': {'class': 'logging.handlers.RotatingFileHandler',
               'formatter': 'f',
-              'filename': 'log',
+              'filename': 'logs/mycloud.log',
               'level': logging.DEBUG}
         },
     root = {

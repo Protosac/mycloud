@@ -7,4 +7,4 @@ class DocumentFactory(factory.Factory):
         model = Document
 
     name = 'testDocument'
-    data = 'files/cloudbox/test_doc.txt'
+    content = 'files/cloudbox/test_doc.txt'

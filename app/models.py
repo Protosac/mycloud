@@ -10,7 +10,11 @@ class Base(db.Model):
                                            onupdate=db.func.current_timestamp())
 
 class Document(Base):
-    def __init__(self, name):
-        self.name = name
-
+    __tablename__= 'documents'
+    
     name = db.Column(db.String)
+    content = db.Column(db.Text)
+    
+    def __init__(self, name, content):
+        self.name = name
+        self.content = content
