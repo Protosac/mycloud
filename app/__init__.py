@@ -3,10 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 
 from app.factory import create_app
+from app.models import db
 
 # service = Flask(__name__)
 service = create_app('development')
-db = SQLAlchemy()
+# db = SQLAlchemy()
 db.init_app(service)
 
 with service.app_context():

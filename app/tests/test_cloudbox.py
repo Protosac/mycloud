@@ -3,11 +3,11 @@ import pytest, requests
 from flask_sqlalchemy import SQLAlchemy
 from unittest import TestCase, skip
 
-from app import db, service, settings
+from app import service, settings
 from app.cloudbox.factories import DocumentFactory
 from app.config import configure_service
 from app.factory import create_app
-from app.models import Document
+from app.models import db, Document
 from sqlalchemy.orm.session import Session
 
 

@@ -33,12 +33,12 @@ class Development(Config):
     DEBUG = True
     DB_NAME = 'mycloud_dev'
     LOGGING_LEVEL = logging.INFO
-    # DB_HOST = 'localhost'
-    # DB_PORT = '5432'
-    # DB_NAME = os.environ['DB_MYCLOUD']
-    # DB_USER = os.environ['DB_USER']
-    # DB_PWD = os.environ['DB_PASSWORD']
-    # SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME)
+    DB_HOST = 'localhost'
+    DB_PORT = '5432'
+    DB_NAME = os.environ['DB_MYCLOUD']
+    DB_USER = os.environ['DB_USER']
+    DB_PWD = os.environ['DB_PASSWORD']
+    SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME)
 
 
 class Testing(Config):
