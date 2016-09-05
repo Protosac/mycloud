@@ -5,14 +5,12 @@ from flask import Flask
 from app.factory import create_app
 from app.models import db
 
-# service = Flask(__name__)
 service = create_app('development')
-db.init_app(service)
+service.logger.info("Starting service ...")
 
-with service.app_context():
-  db.create_all()
-
-service.logger.info("LOGGING CONFIGURED")
+@service.teardown_appcontext
+def shutdown_session(exception=None):
+  db.session.remove()
 
 # View config
 from app.views import index
