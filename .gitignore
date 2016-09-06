@@ -5,3 +5,4 @@ env/
 *.log
 mycloud_env/
 *.pyc
+uploads/

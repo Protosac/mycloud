@@ -33,12 +33,12 @@ class Development(Config):
     DEBUG = True
     DB_NAME = 'mycloud_dev'
     LOGGING_LEVEL = logging.INFO
-    DB_HOST = 'localhost'
-    DB_PORT = '5432'
-    DB_NAME = os.environ['DB_MYCLOUD']
-    DB_USER = os.environ['DB_USER']
-    DB_PWD = os.environ['DB_PASSWORD']
-    SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME)
+    # DB_HOST = 'localhost'
+    # DB_PORT = '5432'
+    # DB_NAME = os.environ['DB_MYCLOUD']
+    # DB_USER = os.environ['DB_USER']
+    # DB_PWD = os.environ['DB_PASSWORD']
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME)
 
 
 class Testing(Config):
@@ -46,7 +46,6 @@ class Testing(Config):
     DB_NAME = 'mycloud_test'
     DB_HOST = 'localhost'
     DB_PORT = '5432'
-    DB_NAME = os.environ['DB_MYCLOUD']
     DB_USER = os.environ['DB_USER']
     DB_PWD = os.environ['DB_PASSWORD']
     SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME)
@@ -58,14 +57,11 @@ config = {
     'production': 'app.config.Production'
 }
 
-def configure_service(service, env=None):
+def configure_service(service, env="default"):
     """Configures service settings for Flask."""
     global config
-    if not env:
-        config_name = os.getenv('FLASK_CONFIGURATION', 'default')
-    else:
-        config_name = env
-    service.config.from_object(config[config_name])
+    service.config.from_object(config[env])
+    service.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
     # Logging configuration
     formatter = logging.Formatter(service.config['LOGGING_FORMAT'])
