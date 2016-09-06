@@ -20,3 +20,8 @@ class Document(Base):
     def __init__(self, name, content):
         self.name = name
         self.content = content
+
+    def save(self):
+        # TODO: Implement
+        db.session.add(self)
+        db.session.commit()

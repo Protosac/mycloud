@@ -2,7 +2,7 @@ import logging.config
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 
-from app.factory import create_app
+from app.factories import create_app
 from app.models import db
 
 service = create_app('development')
