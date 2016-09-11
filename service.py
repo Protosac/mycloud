@@ -6,5 +6,4 @@ from flask_sqlalchemy import SQLAlchemy
 
 if __name__ == '__main__':
     logging.config.dictConfig(LOGGING)
-    configure_service(service)
     service.run()
