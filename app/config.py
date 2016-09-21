@@ -1,5 +1,5 @@
 import logging, os, sys
-
+from app import settings
 
 class Config(object):
     # Why are these not being inherited???
@@ -17,6 +17,9 @@ class Config(object):
     DB_PWD = os.environ['DB_PASSWORD']
     SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(DB_USER, DB_PWD, DB_HOST, DB_PORT, DB_NAME)
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+    UPLOAD_FOLDER = settings.UPLOAD_FOLDER
+    SECRET_KEY = '48372f27-e1eb-4610-97a4-1ae4bd3d8233'
 
 
 class Production(Config):

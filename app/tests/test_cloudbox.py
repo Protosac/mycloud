@@ -54,7 +54,8 @@ class TestCloudBox(TestCase):
         f = open('app/tests/support/test_upload.txt')
         doc = f.read()
         f.close()
-        response = requests.post(localhost, data=doc)
+        form = {'name': 'Test Form', 'content': doc}
+        response = requests.post(localhost, data=form)
 
         self.assertEqual(response.status_code, 200)
 
