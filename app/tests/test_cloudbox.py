@@ -51,13 +51,11 @@ class TestCloudBox(TestCase):
     @pytest.mark.usefixtures("test_app")
     def test_upload_document(self):
         localhost = 'http://localhost:5000/documents'
-        f = open('app/tests/support/test_upload.txt')
-        doc = f.read()
-        f.close()
-        form = {'name': 'Test Form', 'content': doc}
-        response = requests.post(localhost, data=form)
+        with open('app/tests/support/test_upload.txt', 'rb') as doc:
+            form = {'file': doc}
+            response = requests.post(localhost, data=form)
 
-        self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':

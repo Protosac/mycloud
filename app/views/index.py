@@ -17,7 +17,7 @@ class DocumentAPI(MethodView):
 
     def get(self):
         docs = cloudbox.get_documents()
-        return render_template('list.html', documents=docs)
+        return render_template('index.html', documents=docs)
 
     def post(self):
         """

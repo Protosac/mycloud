@@ -1,14 +1,10 @@
-<!doctype html>
-<title>MyCloud CloudBox: Documents</title>
-<!-- <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"> -->
-<div class=page>
+{% extends "_layout.html" %}
   <h1>Cloudbox</h1>
-  <div class=metanav>
-  {% block body %}
+{% block content %}
+
   <ul>
   	{% for document in documents %}
   	<li>{{ document.name }}</li>
   	{% endfor %}
   </ul>
-  {% endblock %}
-</div>
+{% endblock %}

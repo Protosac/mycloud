@@ -1,0 +1,8 @@
+{% block uploads %}
+  <h1>Cloudbox</h1>
+  <form action='/documents' method='post' enctype="multipart/form-data">
+    Document Name: <input type="text" name="docName">
+    Select document: <input type="file" name="uploadDoc">
+    <input type="submit" name="submit">
+  </form>
+{% endblock %}
